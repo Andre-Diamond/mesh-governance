@@ -1,7 +1,6 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
-import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -10,29 +9,9 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+// Use only the Next.js default config for core web vitals.
 const eslintConfig = [
-  ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ),
-  {
-    files: ["**/*.ts", "**/*.tsx"],
-    plugins: {
-      "@typescript-eslint": typescriptEslintPlugin,
-    },
-    rules: {
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unused-vars": ["error", {
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
-      }],
-      "react/prop-types": "off",
-      "no-console": ["warn", { allow: ["warn", "error"] }],
-      "max-len": ["warn", { code: 100, ignoreUrls: true }],
-    },
-  },
+  ...compat.extends("next/core-web-vitals"),
 ];
 
 export default eslintConfig;

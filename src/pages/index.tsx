@@ -1,6 +1,5 @@
 import { useData } from '../contexts/DataContext';
 import styles from '../styles/Dashboard.module.css';
-import { useRouter } from 'next/router';
 import StatusCard from '../components/StatusCard';
 import { useState, useEffect } from 'react';
 import { CatalystProject, GovernanceVote } from '../types';
@@ -10,11 +9,6 @@ import Image from 'next/image';
 const formatNumber = (num: number): string => {
     return new Intl.NumberFormat('en-US').format(num);
 };
-
-// Extended project interface with completion percentage
-interface ProjectWithCompletion extends CatalystProject {
-    completionPercentage: number;
-}
 
 // Component to display compact catalyst proposals overview
 const CatalystProposalsCard = ({ projects }: { projects: CatalystProject[] }) => {
@@ -108,7 +102,6 @@ export default function Dashboard() {
     const { meshData, catalystData, drepVotingData, isLoading, error } = useData();
     const [filteredVotes, setFilteredVotes] = useState<GovernanceVote[]>([]);
     const [filteredProjects, setFilteredProjects] = useState<CatalystProject[]>([]);
-    const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
 
     // Update filtered data when source data changes
     useEffect(() => {
