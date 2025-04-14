@@ -56,7 +56,7 @@ const SearchFilterBar: FC<SearchFilterBarProps> = ({ config, onSearch, initialSe
                 onSearch(typeof search === 'string' ? search : '', urlFilters);
             }
         }
-    }, [router.isReady, router.query, config.filters, initialSearchTerm, onSearch]);
+    }, [router.isReady, router.query, config.filters, initialSearchTerm]);
 
     // Update URL when search or filters change
     const updateUrl = useCallback((term: string, filters: Record<string, string>) => {

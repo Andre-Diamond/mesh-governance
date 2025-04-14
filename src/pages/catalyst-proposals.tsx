@@ -27,7 +27,7 @@ export default function CatalystProposals() {
 
     // Get data early to avoid conditional access
     const data = catalystData?.catalystData;
-    const allProjects = useMemo(() => data?.projects || [], [data?.projects]);
+    const allProjects = data?.projects || [];
 
     // Generate dynamic filter config based on available data
     const dynamicFilterConfig = useMemo(() => {

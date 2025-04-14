@@ -30,7 +30,7 @@ export default function DRepVoting() {
     const router = useRouter();
     const [lastNavigationTime, setLastNavigationTime] = useState(0);
 
-    const votes = useMemo(() => drepVotingData?.votes || [], [drepVotingData?.votes]);
+    const votes = drepVotingData?.votes || [];
 
     // Generate dynamic filter config based on available votes data
     const dynamicFilterConfig = useMemo(() => {
@@ -139,9 +139,9 @@ export default function DRepVoting() {
                     <div className={styles.progressRow}>
                         <div className={styles.progressLabel}>Yes</div>
                         <div className={styles.progressBar}>
-                            <div
-                                className={`${styles.progressFill} ${styles.yes}`}
-                                style={{ width: `${(voteStats.yes / voteStats.total) * 100}%` }}
+                            <div 
+                                className={`${styles.progressFill} ${styles.yes}`} 
+                                style={{width: `${(voteStats.yes / voteStats.total) * 100}%`}}
                             ></div>
                         </div>
                         <div className={styles.progressValue}>{voteStats.yes}</div>
@@ -149,9 +149,9 @@ export default function DRepVoting() {
                     <div className={styles.progressRow}>
                         <div className={styles.progressLabel}>No</div>
                         <div className={styles.progressBar}>
-                            <div
-                                className={`${styles.progressFill} ${styles.no}`}
-                                style={{ width: `${(voteStats.no / voteStats.total) * 100}%` }}
+                            <div 
+                                className={`${styles.progressFill} ${styles.no}`} 
+                                style={{width: `${(voteStats.no / voteStats.total) * 100}%`}}
                             ></div>
                         </div>
                         <div className={styles.progressValue}>{voteStats.no}</div>
@@ -159,9 +159,9 @@ export default function DRepVoting() {
                     <div className={styles.progressRow}>
                         <div className={styles.progressLabel}>Abstain</div>
                         <div className={styles.progressBar}>
-                            <div
-                                className={`${styles.progressFill} ${styles.abstain}`}
-                                style={{ width: `${(voteStats.abstain / voteStats.total) * 100}%` }}
+                            <div 
+                                className={`${styles.progressFill} ${styles.abstain}`} 
+                                style={{width: `${(voteStats.abstain / voteStats.total) * 100}%`}}
                             ></div>
                         </div>
                         <div className={styles.progressValue}>{voteStats.abstain}</div>
