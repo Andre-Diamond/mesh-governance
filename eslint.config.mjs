@@ -1,6 +1,7 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,13 +20,9 @@ const eslintConfig = [
   {
     files: ["**/*.ts", "**/*.tsx"],
     plugins: {
-      "@typescript-eslint": "@typescript-eslint/eslint-plugin",
+      "@typescript-eslint": typescriptEslintPlugin,
     },
     rules: {
-      "@typescript-eslint/explicit-function-return-type": ["error", {
-        allowExpressions: true,
-        allowTypedFunctionExpressions: true,
-      }],
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": ["error", {
         argsIgnorePattern: "^_",
